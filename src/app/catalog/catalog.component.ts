@@ -7,7 +7,6 @@ import { WELCOME_MSG } from '../shared/app.token';
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
-  // eslint-disable-next-line @angular-eslint/prefer-standalone
   standalone: false,
 })
 export class CatalogComponent implements OnInit{
