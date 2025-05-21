@@ -43,6 +43,7 @@ module.exports = tseslint.config(
       eslintPluginPrettierRecommended,
     ],
     rules: {
+      "@angular-eslint/template/prefer-control-flow": "off",
       "prettier/prettier": [
         "error",
         {
