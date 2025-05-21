@@ -11,7 +11,7 @@ import { BasketItem } from './basket.types';
 })
 export class BasketComponent {
   protected customer: Customer = { name: '', address: '', creditCard: '' };
-  private basketService = inject(BasketService)
+  private basketService = inject(BasketService);
 
   protected get basketTotal(): number {
     return this.basketService.total;
@@ -21,9 +21,7 @@ export class BasketComponent {
     return this.basketService.items;
   }
 
-  constructor(
-    private router: Router,
-  ) {
+  constructor(private router: Router) {
     this.basketService.fetch().subscribe();
   }
 

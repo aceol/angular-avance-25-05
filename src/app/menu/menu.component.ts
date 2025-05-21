@@ -15,7 +15,7 @@ export class MenuComponent {
     this.basketService.fetch().subscribe();
   }
 
-  get numberOfBasketItems(){
-    return this.basketService.numberOfItems
+  get numberOfBasketItems() {
+    return this.basketService.numberOfItems;
   }
 }

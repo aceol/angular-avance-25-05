@@ -25,10 +25,12 @@ export class BasketService {
   }
 
   addItem(productId: string): Observable<BasketItem> {
-    return this.apiService.addToBasket(productId).pipe(tap((item) => {
-      this.items.push(item)
-      console.log({nbItems: this.numberOfItems})
-    }));
+    return this.apiService.addToBasket(productId).pipe(
+      tap((item) => {
+        this.items.push(item);
+        console.log({ nbItems: this.numberOfItems });
+      }),
+    );
   }
 
   checkout(customer: Customer): Observable<{ orderNumber: number }> {

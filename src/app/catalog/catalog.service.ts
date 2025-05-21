@@ -1,14 +1,13 @@
 import { inject, Injectable } from '@angular/core';
+import { Observable, tap } from 'rxjs';
 import { Product } from '../product/product.types';
 import { ApiService } from '../shared/services/api.service';
-import { Observable, tap } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CatalogService {
-  
-  public products: Product[] = []
+  public products: Product[] = [];
 
   private apiService = inject(ApiService);
 
@@ -22,11 +21,11 @@ export class CatalogService {
 
   decreaseStock(productId: string): void {
     this.products = this.products.map((product: Product) => {
-      if(product.id === productId){
-        return {...product, stock: product.stock -1}
+      if (product.id === productId) {
+        return { ...product, stock: product.stock - 1 };
       }
-      return product
-    })
+      return product;
+    });
   }
 
   isAvailable(product: Product): boolean {
