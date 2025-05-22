@@ -14,6 +14,12 @@ import { CatalogService } from './catalog.service';
   templateUrl: './catalog.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink, NgFor, NgIf, ProductComponent, AsyncPipe, CurrencyPipe],
+  providers: [
+    {
+      provide: WELCOME_MSG,
+      useValue: 'Bienvenue sur Zenika Ecommerce',
+    },
+  ],
 })
 export class CatalogComponent implements OnInit {
   private basketService = inject(BasketService);
