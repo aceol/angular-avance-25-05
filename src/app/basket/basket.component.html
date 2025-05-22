@@ -1,6 +1,6 @@
 <h2 class="h4">Mon panier</h2>
 
-<div class="card">
+<div class="card" *ngIf="basketItems$ | async as basketItems">
   <div class="card-header">{{ basketItems.length }} {{ basketItems.length === 1 ? 'article' : 'articles' }}</div>
 
   <ul class="list-group list-group-flush">
@@ -9,7 +9,7 @@
     </li>
 
     <li class="list-group-item d-flex justify-content-between fw-bold" *ngIf="basketItems.length; else basketEmpty">
-      Total <span class="text-primary">{{ basketTotal | currency: 'EUR' }}</span>
+      Total <span class="text-primary">{{ basketTotal$ | async | currency: 'EUR' }}</span>
     </li>
 
     <ng-template #basketEmpty>

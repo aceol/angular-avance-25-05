@@ -1,10 +1,12 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Observable } from 'rxjs';
 import { BasketService } from '../basket/basket.service';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuComponent {
   private basketService = inject(BasketService);
@@ -15,7 +17,7 @@ export class MenuComponent {
     this.basketService.fetch().subscribe();
   }
 
-  get numberOfBasketItems() {
-    return this.basketService.numberOfItems;
+  get numberOfBasketItems$(): Observable<number> {
+    return this.basketService.numberOfItems$;
   }
 }

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Product } from '../product/product.types';
 import { ApiService } from '../shared/services/api.service';
 import { PRODUCT_DETAILS_PARAM_KEY } from './product-details.config';
@@ -8,16 +9,22 @@ import { PRODUCT_DETAILS_PARAM_KEY } from './product-details.config';
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductDetailsComponent {
   protected product?: Product;
+  //#changeDetectorRef = inject(ChangeDetectorRef);
+  //product$ = new BehaviorSubject<Product | null>(null);
+  product$: Observable<Product>;
 
   constructor(
     private apiService: ApiService,
     private activatedRoute: ActivatedRoute,
   ) {
-    this.apiService
-      .getProduct(this.activatedRoute.snapshot.params[PRODUCT_DETAILS_PARAM_KEY])
-      .subscribe((product) => (this.product = product));
+    this.product$ = this.apiService.getProduct(this.activatedRoute.snapshot.params[PRODUCT_DETAILS_PARAM_KEY]);
+    //.subscribe((product) => {
+    //  this.product$.next(product);
+    //  this.#changeDetectorRef.markForCheck();
+    //});
   }
 }

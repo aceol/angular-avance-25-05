@@ -1,5 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Customer } from '../customer/customer.types';
 import { BasketService } from './basket.service';
 import { BasketItem } from './basket.types';
@@ -8,20 +9,23 @@ import { BasketItem } from './basket.types';
   selector: 'app-basket',
   templateUrl: './basket.component.html',
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BasketComponent {
+export class BasketComponent implements OnInit {
   protected customer: Customer = { name: '', address: '', creditCard: '' };
   private basketService = inject(BasketService);
 
-  protected get basketTotal(): number {
-    return this.basketService.total;
+  protected get basketTotal$(): Observable<number> {
+    return this.basketService.total$;
   }
 
-  protected get basketItems(): BasketItem[] {
-    return this.basketService.items;
+  protected get basketItems$(): Observable<BasketItem[]> {
+    return this.basketService.items$;
   }
 
-  constructor(private router: Router) {
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
     this.basketService.fetch().subscribe();
   }
 

@@ -10,6 +10,7 @@ import { MenuComponent } from './menu/menu.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductComponent } from './product/product.component';
 import { WELCOME_MSG } from './shared/app.token';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   imports: [BrowserModule, AppRoutingModule],
@@ -28,6 +29,7 @@ import { WELCOME_MSG } from './shared/app.token';
     MenuComponent,
     ProductDetailsComponent,
     ProductComponent,
+    AlertComponent,
   ],
   bootstrap: [AppComponent],
 })
