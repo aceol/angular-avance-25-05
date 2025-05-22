@@ -9,7 +9,7 @@ import { Product } from '../../product/product.types';
   providedIn: 'root',
 })
 export class ApiService {
-  readonly basePath = 'http://localhost:8080';
+  readonly basePath = 'http://localhost:8081';
 
   constructor(private httpClient: HttpClient) {}
 

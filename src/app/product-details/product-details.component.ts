@@ -1,3 +1,4 @@
+import { AsyncPipe, CurrencyPipe, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -8,8 +9,8 @@ import { PRODUCT_DETAILS_PARAM_KEY } from './product-details.config';
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
-  standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgIf, AsyncPipe, CurrencyPipe],
 })
 export class ProductDetailsComponent {
   protected product?: Product;

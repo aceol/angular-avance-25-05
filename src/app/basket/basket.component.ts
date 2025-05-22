@@ -1,3 +1,4 @@
+import { AsyncPipe, CurrencyPipe, NgFor, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -8,8 +9,8 @@ import { BasketItem } from './basket.types';
 @Component({
   selector: 'app-basket',
   templateUrl: './basket.component.html',
-  standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgIf, NgFor, AsyncPipe, CurrencyPipe],
 })
 export class BasketComponent implements OnInit {
   protected customer: Customer = { name: '', address: '', creditCard: '' };

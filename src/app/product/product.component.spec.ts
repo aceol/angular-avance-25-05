@@ -8,8 +8,7 @@ describe('ProductComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [RouterModule.forRoot([])],
-      declarations: [ProductComponent],
+      imports: [RouterModule.forRoot([]), ProductComponent],
     });
 
     fixture = TestBed.createComponent(ProductComponent);
