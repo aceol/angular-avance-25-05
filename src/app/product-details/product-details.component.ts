@@ -1,10 +1,6 @@
-import { AsyncPipe, CurrencyPipe, NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { CurrencyPipe, NgIf } from '@angular/common';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { Product } from '../product/product.types';
-import { ApiService } from '../shared/services/api.service';
-import { PRODUCT_DETAILS_PARAM_KEY } from './product-details.config';
 
 @Component({
   selector: 'app-product-details',
@@ -13,5 +9,6 @@ import { PRODUCT_DETAILS_PARAM_KEY } from './product-details.config';
   imports: [NgIf, CurrencyPipe],
 })
 export class ProductDetailsComponent {
-  @Input({ required: true }) product!: Product;
+  //@Input({ required: true }) product!: Product;
+  product = input.required<Product>();
 }

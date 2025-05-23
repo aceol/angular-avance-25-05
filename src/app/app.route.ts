@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { basketGuard } from './basket/basket.guard';
 import { catalogResolver } from './catalog/catalog.resolver';
-import { PRODUCT_DETAILS_PARAM_KEY } from './product-details/product-details.config';
 import { productDetailsResolveMap } from './product-details/product-details.component.resolver';
+import { PRODUCT_DETAILS_PARAM_KEY } from './product-details/product-details.config';
 
 export const appRoute: Routes = [
   {
