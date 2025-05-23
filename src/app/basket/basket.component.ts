@@ -1,8 +1,8 @@
 import { AsyncPipe, CurrencyPipe, NgFor, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Customer } from '../customer/customer.types';
+import { BasketFormComponent } from './basket-form/basket-form.component';
 import { BasketService } from './basket.service';
 import { BasketItem } from './basket.types';
 
@@ -10,7 +10,7 @@ import { BasketItem } from './basket.types';
   selector: 'app-basket',
   templateUrl: './basket.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, NgFor, AsyncPipe, CurrencyPipe],
+  imports: [NgIf, NgFor, AsyncPipe, CurrencyPipe, BasketFormComponent],
 })
 export class BasketComponent implements OnInit {
   protected customer: Customer = { name: '', address: '', creditCard: '' };
@@ -24,18 +24,7 @@ export class BasketComponent implements OnInit {
     return this.basketService.items$;
   }
 
-  constructor(private router: Router) {}
-
   ngOnInit(): void {
     this.basketService.fetch().subscribe();
-  }
-
-  protected checkout(event: Event): void {
-    event.stopPropagation();
-    event.preventDefault();
-
-    this.basketService.checkout(this.customer).subscribe(() => {
-      this.router.navigate(['']);
-    });
   }
 }
