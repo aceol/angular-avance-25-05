@@ -1,4 +1,4 @@
-import { CurrencyPipe, NgIf } from '@angular/common';
+import { CurrencyPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { Product } from '../product/product.types';
 
@@ -6,7 +6,7 @@ import { Product } from '../product/product.types';
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, CurrencyPipe],
+  imports: [CurrencyPipe],
 })
 export class ProductDetailsComponent {
   //@Input({ required: true }) product!: Product;

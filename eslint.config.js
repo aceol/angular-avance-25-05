@@ -6,7 +6,7 @@ const eslintPluginPrettierRecommended = require("eslint-plugin-prettier/recommen
 
 module.exports = tseslint.config(
   {
-    files: ["**/*.ts"],
+    files: ['**/*.ts'],
     extends: [
       eslint.configs.recommended,
       ...tseslint.configs.recommended,
@@ -16,38 +16,38 @@ module.exports = tseslint.config(
     ],
     processor: angular.processInlineTemplates,
     rules: {
-      "@angular-eslint/directive-selector": [
-        "error",
+      '@angular-eslint/directive-selector': [
+        'error',
         {
-          type: "attribute",
-          prefix: "app",
-          style: "camelCase",
+          type: 'attribute',
+          prefix: 'app',
+          style: 'camelCase',
         },
       ],
-      "@angular-eslint/component-selector": [
-        "error",
+      '@angular-eslint/component-selector': [
+        'error',
         {
-          type: "element",
-          prefix: "app",
-          style: "kebab-case",
+          type: 'element',
+          prefix: 'app',
+          style: 'kebab-case',
         },
       ],
-      "@angular-eslint/prefer-standalone": "off",
+      '@angular-eslint/prefer-standalone': 'off',
     },
   },
   {
-    files: ["**/*.html"],
+    files: ['**/*.html'],
     extends: [
       ...angular.configs.templateRecommended,
       ...angular.configs.templateAccessibility,
       eslintPluginPrettierRecommended,
     ],
     rules: {
-      "@angular-eslint/template/prefer-control-flow": "off",
-      "prettier/prettier": [
-        "error",
+      '@angular-eslint/template/prefer-control-flow': 'error',
+      'prettier/prettier': [
+        'error',
         {
-          parser: "angular",
+          parser: 'angular',
         },
       ],
     },

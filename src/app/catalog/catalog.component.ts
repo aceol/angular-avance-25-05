@@ -1,4 +1,4 @@
-import { AsyncPipe, CurrencyPipe, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { catchError, EMPTY, Observable } from 'rxjs';
@@ -13,7 +13,7 @@ import { CatalogService } from './catalog.service';
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, NgFor, NgIf, ProductComponent, AsyncPipe, CurrencyPipe],
+  imports: [RouterLink, ProductComponent, AsyncPipe, CurrencyPipe],
   providers: [
     {
       provide: WELCOME_MSG,
